@@ -1,0 +1,27 @@
+import Link from "next/link";
+import { ArrowUpRight, Eye, Flag, HeartHandshake, ShieldCheck, Sparkles, Check } from "lucide-react";
+import { Reveal, ImageReveal } from "@/components/motion";
+import { ContactBand } from "@/components/home-sections";
+import { site, image } from "@/lib/site";
+import { pageMetadata } from "@/lib/metadata";
+
+export const metadata = pageMetadata({ title: "About Us", description: `Meet RS Construction, a construction company based in ${site.city}, ${site.region}. Learn about our approach, values and commitment to thoughtful building.`, path: "/about" });
+
+const values = [
+  { icon: <HeartHandshake />, name: "Respect", text: "Listen well, communicate clearly and treat every project with care." },
+  { icon: <ShieldCheck />, name: "Integrity", text: "Be straightforward about the work, choices and next steps." },
+  { icon: <Sparkles />, name: "Craft", text: "Give attention to the details that make a space feel complete." },
+  { icon: <Flag />, name: "Commitment", text: "Stay focused on the goals and priorities we agree together." },
+];
+
+export default function AboutPage() {
+  return <>
+    <section className="page-hero"><div className="container site-container"><div className="page-hero-copy"><span className="eyebrow eyebrow-light">A LITTLE ABOUT US</span><h1>Good spaces begin<br />with <em>good conversations.</em></h1><p>We help people in Tirunelveli plan, build and improve the places that matter to them.</p><span className="page-hero-location">{site.city} · {site.region}</span></div><div className="page-hero-image"><ImageReveal src={image("photo-1600566753086-00f18fb6b3ea", 1500)} alt="A considered modern home surrounded by greenery" priority /></div></div></section>
+    <section className="section-pad"><div className="container site-container"><div className="row g-5 align-items-center"><Reveal className="col-lg-5"><span className="eyebrow">OUR STORY</span><h2 className="display-heading">A more thoughtful<br /><em>way to build.</em></h2></Reveal><Reveal className="col-lg-6 offset-lg-1" delay={.1}><p className="large-prose">RS Construction is a locally based building company serving Tirunelveli. We bring construction, renovation, civil work and design support together so you can explore your options with one clear conversation.</p><p className="body-copy">Every project starts somewhere different. Our role is to listen to what you need, understand the work ahead and help you find a practical next step. We believe a good building experience is shaped by both the finished space and the care taken to get there.</p></Reveal></div></div></section>
+    <section className="vision-section"><div className="container site-container"><div className="row g-4"><Reveal className="col-md-6"><article className="vision-card"><span><Eye size={19} /></span><span className="eyebrow">OUR VISION</span><h2>Spaces that make everyday life better.</h2><p>To help create thoughtful, lasting spaces that reflect the people who use them and the way they want to live.</p></article></Reveal><Reveal className="col-md-6" delay={.08}><article className="vision-card vision-card-gold"><span><Flag size={19} /></span><span className="eyebrow">OUR MISSION</span><h2>Make the building journey clearer.</h2><p>To guide each project with practical planning, considered workmanship and honest communication at every stage.</p></article></Reveal></div></div></section>
+    <section className="section-pad"><div className="container site-container"><Reveal><div className="section-heading"><div><span className="eyebrow">WHAT GUIDES OUR WORK</span><h2>Values in every detail</h2><p>The commitments we bring to each project conversation.</p></div></div></Reveal><div className="row g-4 values-grid">{values.map((v, i) => <Reveal key={v.name} className="col-sm-6 col-lg-3" delay={i * .06}><article className="value-card"><span className="value-icon">{v.icon}</span><span className="value-index">0{i + 1}</span><h3>{v.name}</h3><p>{v.text}</p></article></Reveal>)}</div></div></section>
+    <section className="quality-section"><div className="container site-container"><div className="row g-5 align-items-center"><Reveal className="col-lg-5"><span className="eyebrow eyebrow-light">OUR QUALITY COMMITMENT</span><h2>Care you can<br /><em>see and feel.</em></h2></Reveal><Reveal className="col-lg-6 offset-lg-1" delay={.1}><p>Quality is more than a final finish. It is how well the project is planned, how clearly decisions are explained, and how consistently the agreed details are carried through.</p><ul className="check-list check-list-light"><li><Check size={16} /> Start with a shared understanding of the scope</li><li><Check size={16} /> Keep material and design choices practical</li><li><Check size={16} /> Give attention to the experience of the finished space</li></ul></Reveal></div></div></section>
+    <section className="section-pad"><div className="container site-container"><Reveal><div className="people-note"><span className="eyebrow">THE PEOPLE BEHIND THE WORK</span><h2>A real conversation, before anything else.</h2><p>We’re keeping this page focused on the company and the way we work. Individual team profiles will be added when verified names and details are available.</p><Link href="/contact" className="text-link">Talk with RS Construction <ArrowUpRight size={15} /></Link></div></Reveal></div></section>
+    <ContactBand />
+  </>;
+}
