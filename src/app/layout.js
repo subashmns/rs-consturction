@@ -4,16 +4,14 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import WhatsAppButton from "@/components/whatsapp";
 import MotionConfigProvider from "@/components/motion-config";
-import { site } from "@/lib/site";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+import { site, siteUrl } from "@/lib/site";
 
 export const metadata = {
   metadataBase: siteUrl ? new URL(siteUrl) : undefined,
   title: { default: `${site.name} | Building Your Dreams`, template: `%s | ${site.name}` },
   description: `Construction, renovation and interior services in ${site.city}, ${site.region}. Plan your next project with RS Construction.`,
-  openGraph: { type: "website", locale: "en_IN", siteName: site.name, title: `${site.name} | Building Your Dreams`, description: `Thoughtful construction and renovation services in ${site.city}, ${site.region}.`, ...(siteUrl ? { images: [{ url: `${siteUrl}/images/rs-construction-logo.png`, alt: "RS Construction — Building Your Dreams" }] } : {}) },
-  twitter: { card: "summary_large_image", title: `${site.name} | Building Your Dreams`, description: `Thoughtful construction and renovation services in ${site.city}, ${site.region}.`, ...(siteUrl ? { images: [`${siteUrl}/images/rs-construction-logo.png`] } : {}) },
+  openGraph: { type: "website", locale: "en_IN", siteName: site.name, title: `${site.name} | Building Your Dreams`, description: `Thoughtful construction and renovation services in ${site.city}, ${site.region}.`, images: [{ url: `${siteUrl}/images/rs-construction-logo.png`, alt: "RS Construction — Building Your Dreams" }] },
+  twitter: { card: "summary_large_image", title: `${site.name} | Building Your Dreams`, description: `Thoughtful construction and renovation services in ${site.city}, ${site.region}.`, images: [`${siteUrl}/images/rs-construction-logo.png`] },
   icons: { icon: "/favicon.svg", apple: "/favicon.svg" },
 };
 
@@ -26,7 +24,7 @@ export default function RootLayout({ children }) {
     slogan: site.tagline,
     address: { "@type": "PostalAddress", addressLocality: site.city, addressRegion: site.region, addressCountry: "IN" },
     areaServed: { "@type": "City", name: site.city },
-    url: process.env.NEXT_PUBLIC_SITE_URL || undefined,
+    url: siteUrl,
     telephone: site.phone || undefined,
     email: site.email || undefined,
   };

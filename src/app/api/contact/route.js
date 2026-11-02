@@ -131,7 +131,15 @@ export async function POST(request) {
       return json({ success: false, message: "The email provider did not accept this enquiry. Please try again shortly." }, 502);
     }
     return json({ success: true, message: "Enquiry email sent successfully" }, 200);
-  } catch {
+  } catch (error) {
+    // Keep details in server logs for deployment debugging without exposing SMTP
+    // responses or credentials to the public API response.
+    console.error("[contact] SMTP send failed", {
+      name: error instanceof Error ? error.name : "UnknownError",
+      code: typeof error?.code === "string" ? error.code : undefined,
+      command: typeof error?.command === "string" ? error.command : undefined,
+      responseCode: Number.isInteger(error?.responseCode) ? error.responseCode : undefined,
+    });
     recentSubmissions.delete(signature);
     return json({ success: false, message: "We couldn't send your enquiry right now. Please try again shortly." }, 502);
   }
