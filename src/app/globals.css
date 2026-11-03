@@ -170,3 +170,70 @@
 /* Next Image fill needs a positioned wrapper; the hero wrapper stays absolute */
 .image-reveal{position:relative}
 .image-reveal.hero-visual{position:absolute}
+
+/* Designed map card beside the contact form on wide screens */
+.location-section{padding:0 0 75px;background:var(--warm)}
+.location-section .contact-map-card{margin-top:22px}
+.contact-map-card{padding:22px;background:#fff;border:1px solid #e8e0d2;box-shadow:0 12px 30px rgba(27,34,42,.055)}
+.contact-map-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}
+.contact-map-heading .eyebrow{font-size:10px}
+.contact-map-heading h3{font-family:var(--serif);font-size:21px;color:var(--navy);margin:3px 0 0}
+.contact-map-heading p{font-size:14px;color:#687584;margin:6px 0 0}
+.contact-map-link{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;color:#91641c;font-size:12px;font-weight:700;text-decoration:none}
+.contact-map-link:hover{color:var(--navy)}
+.location-map{position:relative;height:430px;overflow:hidden;border:1px solid rgba(180,126,36,.28);background:#e9e5dc}
+.location-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media(max-width:991.98px){.location-map{height:370px}.contact-map-card{padding:18px}.contact-map-heading h3{font-size:19px}}
+@media(max-width:575.98px){.location-section{padding-bottom:50px}.location-map{height:300px}.contact-map-card{padding:14px}.contact-map-heading{align-items:flex-start}.contact-map-heading h3{font-size:18px}.contact-map-link{font-size:11px}}
+@media(max-width:991.98px){.contact-content{padding:42px 0}.contact-content .row{--bs-gutter-x:1.5rem;--bs-gutter-y:1.6rem}}
+@media(max-width:575.98px){.contact-content{padding:32px 0}.contact-content .row{--bs-gutter-x:1rem;--bs-gutter-y:1.3rem}.contact-content .form-panel{padding:21px 16px}}
+@media(max-width:380px){.contact-content .form-panel{padding:19px 14px}}
+
+/* Temporary founder profile until the client supplies a real portrait */
+.founder-section{background:#f7f5f0;overflow:hidden}
+.founder-avatar-frame{position:relative;max-width:490px;margin:auto;padding:11px;background:#ece6da;border:1px solid #e5dccb}
+.founder-avatar{height:470px;overflow:hidden;background:#efe5d1}
+.founder-avatar img{object-fit:cover;object-position:50% 42%}
+.founder-avatar-caption{position:absolute;left:22px;bottom:22px;padding:8px 11px;background:rgba(255,255,255,.93);color:#6e6048;font-size:11px;letter-spacing:.04em}
+.founder-profile-copy h2{margin:17px 0}
+.founder-role{display:table;margin-top:14px;padding:7px 10px;background:#eee6d7;color:#8a611d;font-size:11px;font-weight:700;letter-spacing:.12em}
+.founder-profile-copy .large-prose{max-width:650px}
+.founder-credentials{display:flex;gap:12px;margin-top:24px}
+.founder-credentials>div{min-width:175px;padding:14px 16px;background:#fff;border:1px solid #e8e1d4}
+.founder-credentials strong,.founder-credentials span{display:block}
+.founder-credentials strong{font-family:var(--serif);font-size:25px;line-height:1;color:var(--navy)}
+.founder-credentials span{margin-top:5px;font-size:12px;color:#687584}
+@media(max-width:575.98px){.founder-avatar-frame{max-width:430px;padding:8px}.founder-avatar{height:350px}.founder-avatar-caption{left:16px;bottom:16px}.founder-credentials>div{min-width:0;flex:1}}
+
+/* Gentle hover motion for title imagery and content cards */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .page-hero-image img{transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+  .page-hero:hover .page-hero-image img{transform:scale(1.035)}
+  .vision-card,.value-card,.location-card,.contact-map-card{transition:transform .28s ease,box-shadow .28s ease}
+  .vision-card:hover,.value-card:hover,.location-card:hover,.contact-map-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(12,28,42,.1)}
+}
+
+/* Quiet, slow construction-themed ambient motion across all routes */
+.construction-atmosphere{position:fixed;inset:0;z-index:5;overflow:hidden;pointer-events:none;color:#b47e24}
+.construction-motif{position:absolute;display:grid;place-items:center;width:38px;height:38px;opacity:.2;animation:construction-orbit 34s ease-in-out infinite}
+.construction-motif svg{width:100%;height:100%;stroke-width:1.45}
+.construction-motif-one{left:-42px;top:18%;animation:construction-travel-right 48s linear infinite;animation-delay:-4s}
+.construction-motif-two{right:-42px;top:29%;width:32px;height:32px;animation:construction-travel-left 53s linear infinite;animation-delay:-11s}
+.construction-motif-three{left:-42px;top:51%;width:36px;height:36px;animation:construction-travel-right 57s linear infinite;animation-delay:-17s}
+.construction-motif-four{right:-42px;top:66%;width:31px;height:31px;animation:construction-travel-left 49s linear infinite;animation-delay:-7s}
+.construction-motif-five{left:-42px;bottom:18%;width:30px;height:30px;animation:construction-travel-right 62s linear infinite;animation-delay:-14s}
+.construction-motif-six{right:-42px;bottom:20%;width:36px;height:36px;animation:construction-travel-left 58s linear infinite;animation-delay:-23s}
+.construction-motif-seven{left:12%;bottom:10%;width:32px;height:32px;animation-delay:-8s;animation-direction:reverse}
+.construction-motif-eight{right:12%;bottom:11%;width:28px;height:28px;animation-delay:-18s}
+.construction-motif-nine{left:13%;top:12%;width:29px;height:29px;animation-delay:-27s;animation-direction:reverse}
+.construction-motif-ten{right:13%;top:14%;width:33px;height:33px;animation-delay:-5s}
+.construction-motif-eleven{left:22%;bottom:7%;width:27px;height:27px;animation-delay:-20s;animation-direction:reverse}
+.construction-motif-twelve{right:22%;bottom:8%;width:27px;height:27px;animation-delay:-12s}
+@keyframes construction-orbit{0%,100%{transform:translate3d(0,0,0) rotate(0deg)}25%{transform:translate3d(9px,-8px,0) rotate(90deg)}50%{transform:translate3d(0,-17px,0) rotate(180deg)}75%{transform:translate3d(-9px,-8px,0) rotate(270deg)}}
+@keyframes construction-travel-right{0%{transform:translate3d(0,0,0) rotate(0deg)}25%{transform:translate3d(25vw,-10px,0) rotate(90deg)}50%{transform:translate3d(50vw,5px,0) rotate(180deg)}75%{transform:translate3d(75vw,-8px,0) rotate(270deg)}100%{transform:translate3d(calc(100vw + 50px),0,0) rotate(360deg)}}
+@keyframes construction-travel-left{0%{transform:translate3d(0,0,0) rotate(0deg)}25%{transform:translate3d(-25vw,-9px,0) rotate(-90deg)}50%{transform:translate3d(-50vw,6px,0) rotate(-180deg)}75%{transform:translate3d(-75vw,-8px,0) rotate(-270deg)}100%{transform:translate3d(calc(-100vw - 50px),0,0) rotate(-360deg)}}
+.form-heading-main{display:flex;align-items:center;gap:12px}
+.form-heading-icon{display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;border:1px solid #c39a53;color:#a97721;background:rgba(255,255,255,.58)}
+.form-panel-heading .project-enquiry-label{color:#a97721}
+@media(max-width:575.98px){.construction-motif{width:28px;height:28px;opacity:.12}.construction-motif-two{width:24px;height:24px}.construction-motif-three{width:27px;height:27px}.construction-motif-four{width:24px;height:24px}.construction-motif-five,.construction-motif-six,.construction-motif-seven,.construction-motif-eight,.construction-motif-nine,.construction-motif-ten,.construction-motif-eleven,.construction-motif-twelve{display:none}.construction-motif-one{left:-32px;top:20%;animation-duration:43s}.construction-motif-two{right:-32px;top:37%;animation-duration:48s}.construction-motif-three{left:-32px;top:auto;bottom:27%;animation-duration:52s}.construction-motif-four{right:-32px;top:auto;bottom:13%;animation-duration:46s}.form-heading-icon{flex-basis:36px;width:36px;height:36px}}
+@media(prefers-reduced-motion:reduce){.construction-motif{animation:none!important}}

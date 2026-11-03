@@ -94,11 +94,11 @@ export async function POST(request) {
   const { name, phone, email, service, location, message } = values;
   const phoneDigits = phone.replace(/\D/g, "");
   if (name.length < 2 || name.length > 100) return json({ success: false, message: "Enter a name between 2 and 100 characters." }, 400);
-  if (!/^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/.test(email) || email.length > 254) return json({ success: false, message: "Enter a valid email address." }, 400);
+  if (email && (!/^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/.test(email) || email.length > 254)) return json({ success: false, message: "Enter a valid email address." }, 400);
   if (!/^[+\d().\-\s]{7,25}$/.test(phone) || phoneDigits.length < 8 || phoneDigits.length > 15) return json({ success: false, message: "Enter a valid phone number with 8 to 15 digits." }, 400);
   if (!services.has(service)) return json({ success: false, message: "Choose a valid project service." }, 400);
   if (location.length < 2 || location.length > 120) return json({ success: false, message: "Enter a project location between 2 and 120 characters." }, 400);
-  if (message.length < 10 || message.length > 3000) return json({ success: false, message: "Your message must be between 10 and 3,000 characters." }, 400);
+  if (message.length > 3000 || (message.length > 0 && message.length < 10)) return json({ success: false, message: "If you add a project description, it must be between 10 and 3,000 characters." }, 400);
 
   const receiver = process.env.CONTACT_RECEIVER_EMAIL?.trim() || "subashebanezer@gmail.com";
   const signature = createHash("sha256").update(`${key}\n${name.toLowerCase()}\n${email.toLowerCase()}\n${phone}\n${service}\n${location.toLowerCase()}\n${message}`).digest("hex");
@@ -120,7 +120,7 @@ export async function POST(request) {
     const info = await mailConfig.transporter.sendMail({
       from: mailConfig.from,
       to: receiver,
-      replyTo: email,
+      ...(email ? { replyTo: email } : {}),
       subject: "New Enquiry - RS Construction",
       text,
       html,

@@ -1,4 +1,5 @@
+import { siteUrl } from "@/lib/site";
+
 export default function robots() {
-  const base = process.env.NEXT_PUBLIC_SITE_URL;
-  return { rules: { userAgent: "*", allow: "/" }, ...(base ? { sitemap: `${base}/sitemap.xml` } : {}) };
+  return { rules: { userAgent: "*", allow: "/" }, sitemap: `${siteUrl}/sitemap.xml` };
 }
